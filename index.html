@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Block Blast</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header>
+      <div class="stat"><span>Score</span><b id="score">0</b></div>
+      <button id="restart" type="button">New game</button>
+      <div class="stat right"><span>Best</span><b id="best">0</b></div>
+    </header>
+    <div id="stage">
+      <canvas id="c" aria-label="Block Blast board"></canvas>
+      <div id="msg" aria-live="polite"></div>
+      <div id="over" hidden>
+        <div class="card">
+          <h2>No moves left</h2>
+          <p class="final" id="final">0</p>
+          <p class="tag" id="newbest" hidden>New best score</p>
+          <button id="again" type="button">Play again</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

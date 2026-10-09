@@ -1,0 +1,55 @@
+:root { --bg: #171229; --panel: #241c3f; --ink: #f4efff; --dim: #9a90c4; --accent: #ffb347; }
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: radial-gradient(120% 80% at 50% 0, #2b2050 0, var(--bg) 60%);
+  color: var(--ink);
+  font: 700 16px/1.2 "Nunito", "Trebuchet MS", ui-rounded, system-ui, sans-serif;
+  display: grid; place-items: center;
+  overscroll-behavior: none; user-select: none; -webkit-user-select: none;
+}
+#app { width: min(94vw, 440px, calc((100dvh - 100px) * 0.678)); }
+
+header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 10px; }
+.stat span { display: block; color: var(--dim); font-size: 14px; font-weight: 600; }
+.stat b { font-size: 34px; font-variant-numeric: tabular-nums; }
+.stat.right { text-align: right; }
+.stat.right b { color: var(--accent); }
+
+button {
+  font: inherit; cursor: pointer; border: 0; border-radius: 14px;
+  background: var(--accent); color: #2a1a00; padding: 12px 28px;
+}
+#restart { background: transparent; color: var(--ink); border: 2px solid #4a3f7a; padding: 8px 14px; font-size: 14px; }
+button:hover { filter: brightness(1.1); }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+#stage { position: relative; }
+canvas { width: 100%; aspect-ratio: 400 / 590; display: block; touch-action: none; }
+
+#msg {
+  position: absolute; left: 0; right: 0; top: 26%;
+  text-align: center; pointer-events: none; opacity: 0;
+  font-size: 38px; color: var(--accent); text-shadow: 0 3px 0 rgba(0, 0, 0, .35);
+}
+#msg small { display: block; font-size: 18px; color: var(--ink); text-shadow: none; margin-top: 4px; }
+#msg.pop { animation: pop .95s ease-out; }
+@keyframes pop {
+  0% { opacity: 0; transform: scale(.6); }
+  20% { opacity: 1; transform: scale(1.08); }
+  70% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: translateY(-18px); }
+}
+@keyframes fade { 0%, 80% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { #msg.pop { animation-name: fade; } }
+
+#over {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(23, 18, 41, .84); border-radius: 16px;
+}
+#over[hidden] { display: none; }
+.card { text-align: center; }
+.card h2 { margin: 0 0 6px; font-size: 28px; }
+.final { margin: 0; font-size: 64px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.tag { margin: 4px 0 0; color: #8ce99a; }
+.card button { margin-top: 20px; }
